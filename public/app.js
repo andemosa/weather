@@ -76,8 +76,8 @@ function setWeather(data) {
   temperatureElement.textContent = data.temperature;
   humidityElement.textContent = data.humidity;
   windElement.textContent = data.speed;
-  countryElement.innerHTML = `${data.country} <img src="http://openweathermap.org/images/flags/${data.lower}.png" alt="">`;
-  iconContainer.innerHTML = `<img id="icon" src="http://openweathermap.org/img/wn/${data.icon}@2x.png" alt="${data.description}" title="${data.description}" >`;
+  countryElement.innerHTML = `${data.country} <img src="https://openweathermap.org/images/flags/${data.lower}.png" alt="">`;
+  iconContainer.innerHTML = `<img id="icon" src="https://openweathermap.org/img/wn/${data.icon}@2x.png" alt="${data.description}" title="${data.description}" >`;
 }
 
 function saveRecentSearches(data) {
