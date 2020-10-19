@@ -10,20 +10,14 @@ html {
   background: linear-gradient(to right, rgb(35, 156, 255), rgb(67, 87, 175));
   min-height: 100vh;
 }
+
 .banner {
   align-content: center;
   display: none;
   justify-content: center;
   width: 100%;
 }
-main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-}
+
 h1 {
   text-align: center;
   margin: 2em 0 1em;
@@ -52,12 +46,7 @@ h1 {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
-.banner {
-  align-content: center;
-  display: none;
-  justify-content: center;
-  width: 100%;
-}
+
 span {
   font-size: 1rem;
   color: black;
