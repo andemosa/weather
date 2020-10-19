@@ -7,7 +7,6 @@ const temperatureElement = document.querySelector("[data-temperature]");
 const humidityElement = document.querySelector("[data-humidity]");
 const windElement = document.querySelector("[data-wind]");
 const iconContainer = document.querySelector(".icon-container");
-const get = document.querySelector(".default");
 
 searchTerm.addEventListener("change", (e) => {
   const value = searchTerm.value;
@@ -75,36 +74,6 @@ function setWeather(data) {
   windElement.textContent = data.speed;
   countryElement.innerHTML = `${data.country} <img src="https://openweathermap.org/images/flags/${data.lower}.png" alt="">`;
   iconContainer.innerHTML = `<img id="icon" src="https://openweathermap.org/img/wn/${data.icon}@2x.png" alt="${data.description}" title="${data.description}" >`;
-}
-
-// Use GeoLocation
-get.addEventListener("click", getCurrentPosition);
-
-function getCurrentPosition() {
-  get.style.display = "none";
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(success);
-  }
-}
-
-function success(position) {
-  const { latitude, longitude } = position.coords;
-
-  fetch("/coordinates", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-    body: JSON.stringify({
-      latitude,
-      longitude,
-    }),
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      sortData(data);
-    });
 }
 
 //Helper Functions
