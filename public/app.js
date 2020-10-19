@@ -8,7 +8,6 @@ const humidityElement = document.querySelector("[data-humidity]");
 const windElement = document.querySelector("[data-wind]");
 const iconContainer = document.querySelector(".icon-container");
 const get = document.querySelector(".default");
-const recentSearches = JSON.parse(localStorage.getItem("recentSearches")) || [];
 
 searchTerm.addEventListener("change", (e) => {
   const value = searchTerm.value;
@@ -25,8 +24,7 @@ searchTerm.addEventListener("change", (e) => {
     .then((res) => res.json())
     .then((data) => {
       if (data.cod === 500) {
-        networkHandler();
-        getRecentSearches(value);
+        return networkHandler();
       }
       sortData(data);
     });
@@ -55,7 +53,6 @@ function sortData(data) {
       date,
     };
     setWeather(sortedData);
-    saveRecentSearches(sortedData);
   } else if (data.cod == 404) {
     errHandler();
   }
@@ -78,25 +75,6 @@ function setWeather(data) {
   windElement.textContent = data.speed;
   countryElement.innerHTML = `${data.country} <img src="https://openweathermap.org/images/flags/${data.lower}.png" alt="">`;
   iconContainer.innerHTML = `<img id="icon" src="https://openweathermap.org/img/wn/${data.icon}@2x.png" alt="${data.description}" title="${data.description}" >`;
-}
-
-function saveRecentSearches(data) {
-  let searchExists = recentSearches.find(
-    (element) => element.location === data.location
-  );
-  if (!searchExists) {
-    recentSearches.push(data);
-    localStorage.setItem("recentSearches", JSON.stringify(recentSearches));
-  }
-}
-
-function getRecentSearches(value) {
-  let cityExists = recentSearches.find(
-    (element) => element.location === capitalize(value)
-  );
-  if (cityExists) {
-    setWeather(cityExists);
-  }
 }
 
 // Use GeoLocation
