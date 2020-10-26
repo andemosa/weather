@@ -57,7 +57,7 @@ function sortData(data) {
   }
 }
 
-function errHandler() {
+function errHandler(location) {
   clearWeather()
   statusElement.textContent = `${location} not found. Try a different search`;
 }
