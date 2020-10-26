@@ -58,10 +58,12 @@ function sortData(data) {
 }
 
 function errHandler() {
+  clearWeather()
   statusElement.textContent = `City not found. Try a different search`;
 }
 
 function networkHandler() {
+  clearWeather()
   statusElement.textContent = `Poor or no internet connection. Please try again`;
 }
 
@@ -74,6 +76,17 @@ function setWeather(data) {
   windElement.textContent = data.speed;
   countryElement.innerHTML = `${data.country} <img src="https://openweathermap.org/images/flags/${data.lower}.png" alt="">`;
   iconContainer.innerHTML = `<img id="icon" src="https://openweathermap.org/img/wn/${data.icon}@2x.png" alt="${data.description}" title="${data.description}" >`;
+}
+
+function clearWeather(){
+  dayElement.textContent = '';
+  locationElement.textContent = 'To Find The Weather';
+  statusElement.textContent = 'Enter A Location';
+  temperatureElement.textContent = '...';
+  humidityElement.textContent = '...';
+  windElement.textContent = '...';
+  countryElement.innerHTML = ``;
+  iconContainer.innerHTML = ``;
 }
 
 //Helper Functions
