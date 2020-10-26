@@ -53,13 +53,13 @@ function sortData(data) {
     };
     setWeather(sortedData);
   } else if (data.cod == 404) {
-    errHandler();
+    errHandler(location);
   }
 }
 
 function errHandler() {
   clearWeather()
-  statusElement.textContent = `City not found. Try a different search`;
+  statusElement.textContent = `${location} not found. Try a different search`;
 }
 
 function networkHandler() {
