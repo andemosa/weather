@@ -30,6 +30,7 @@ searchTerm.addEventListener("change", (e) => {
 });
 
 function sortData(data) {
+  console.log(data)
   if (data.cod == 200) {
     const { name: location } = data;
     const { temp: temperature, humidity } = data.main;
@@ -53,13 +54,14 @@ function sortData(data) {
     };
     setWeather(sortedData);
   } else if (data.cod == 404) {
-    errHandler(location);
+    errHandler();
   }
 }
 
-function errHandler(location) {
+function errHandler() {
+  const value = searchTerm.value
   clearWeather()
-  statusElement.textContent = `${location} not found. Try a different search`;
+  statusElement.innerHTML = `<span class="red">${value}</span> not found. Try a different search`;
 }
 
 function networkHandler() {

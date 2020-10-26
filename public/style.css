@@ -10,7 +10,6 @@ html {
   background: linear-gradient(to right, rgb(35, 156, 255), rgb(67, 87, 175));
   min-height: 100vh;
 }
-
 .banner {
   align-content: center;
   display: none;
@@ -47,7 +46,7 @@ h1 {
   border-top-right-radius: 5px;
 }
 
-span {
+.span {
   font-size: 1rem;
   color: black;
 }
@@ -76,6 +75,11 @@ span {
   font-size: 2rem;
   font-weight: bold;
   color: rgb(67, 87, 175);
+}
+.red{
+  font-size: 2rem;
+  font-weight: bold;
+  color: rgb(216, 41, 10);
 }
 
 .location {
